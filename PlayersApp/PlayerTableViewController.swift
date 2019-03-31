@@ -60,8 +60,7 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
         xmlPlayers = xmlParser.players;
         
         //initialize document directory
-        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!;
-        
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true);
         
         for player in xmlPlayers{
             
@@ -74,22 +73,21 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             playersObj.details = player.details;
             playersObj.url = player.url;
             
-            //create file url and save to core data
-            let imageName = String(player.ranking) + ".png";
-            let imageUrl = documentsUrl.appendingPathComponent(imageName);
-            playersObj.imagePath = imageUrl.absoluteString;
+            //create file url
+            let imageNameWithExtension = String(player.ranking) + ".png";
+            let imageUrl = URL(fileURLWithPath: paths.first!).appendingPathComponent(imageNameWithExtension);
             
             //save image to path
             saveImageToPath(image: UIImage(named: player.image)!, path: imageUrl);
             
-            do {
-                try context.save();
-            }
-            catch{
-                print("unable to save to core data")
-            }
-            
-            print("Added player \(player.ranking)");
+//            print("Added player \(player.ranking)");
+        }
+        
+        do {
+            try context.save();
+        }
+        catch{
+            print("unable to save to core data")
         }
         
     }
@@ -160,7 +158,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
         let imageNameWithExtension = imageName + ".png";
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true);
         let imageUrl = URL(fileURLWithPath: paths.first!).appendingPathComponent(imageNameWithExtension);
-        print("from function - \(imageUrl.path)")
         return UIImage(contentsOfFile: imageUrl.path)!;
     }
     
@@ -170,10 +167,7 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as! PlayerBasicInfoViewController
-        let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell);
-        playersObj = frc.object(at: indexPath!) as! Players;
-        destination.playerData = playersObj;
+        let destination = segue.destination as! AddEditViewController
         
         
     }

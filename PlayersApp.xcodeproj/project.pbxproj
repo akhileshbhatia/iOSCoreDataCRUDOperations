@@ -13,11 +13,9 @@
 		47358CDE22185A7F00369F65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47358CDD22185A7F00369F65 /* Assets.xcassets */; };
 		47358CE122185A7F00369F65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47358CDF22185A7F00369F65 /* LaunchScreen.storyboard */; };
 		47358CED221865F900369F65 /* PlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47358CEC221865F900369F65 /* PlayerTableViewController.swift */; };
+		474934612251145D0030D570 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474934602251145D0030D570 /* AddEditViewController.swift */; };
 		475800FC224E9EDB00F14B3F /* Players.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 475800FA224E9EDB00F14B3F /* Players.xcdatamodeld */; };
 		47580104224EADFD00F14B3F /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47580103224EADFC00F14B3F /* PlayerInfo.swift */; };
-		477E2D79222C030F00FE5CB4 /* PlayerBasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2D78222C030F00FE5CB4 /* PlayerBasicInfoViewController.swift */; };
-		477E2D7B222C0F0100FE5CB4 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2D7A222C0F0100FE5CB4 /* PlayerDetailsViewController.swift */; };
-		477E2D7D222C155100FE5CB4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E2D7C222C155100FE5CB4 /* WebViewController.swift */; };
 		47801A3A221EB35600DEB9DA /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47801A39221EB35600DEB9DA /* PlayerTableViewCell.swift */; };
 		47C918BE2231B05A00AF8521 /* XMLPlayersParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C918BD2231B05A00AF8521 /* XMLPlayersParser.swift */; };
 /* End PBXBuildFile section */
@@ -31,11 +29,9 @@
 		47358CE022185A7F00369F65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47358CE222185A7F00369F65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47358CEC221865F900369F65 /* PlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewController.swift; sourceTree = "<group>"; };
+		474934602251145D0030D570 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 		475800FB224E9EDB00F14B3F /* Players.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Players.xcdatamodel; sourceTree = "<group>"; };
 		47580103224EADFC00F14B3F /* PlayerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
-		477E2D78222C030F00FE5CB4 /* PlayerBasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBasicInfoViewController.swift; sourceTree = "<group>"; };
-		477E2D7A222C0F0100FE5CB4 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
-		477E2D7C222C155100FE5CB4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		47801A39221EB35600DEB9DA /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		47C918BD2231B05A00AF8521 /* XMLPlayersParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLPlayersParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,12 +66,10 @@
 		47358CD522185A7F00369F65 /* PlayersApp */ = {
 			isa = PBXGroup;
 			children = (
-				477E2D7C222C155100FE5CB4 /* WebViewController.swift */,
 				47358CD622185A7F00369F65 /* AppDelegate.swift */,
+				474934602251145D0030D570 /* AddEditViewController.swift */,
 				475800FA224E9EDB00F14B3F /* Players.xcdatamodeld */,
 				47358CDA22185A7F00369F65 /* Main.storyboard */,
-				477E2D7A222C0F0100FE5CB4 /* PlayerDetailsViewController.swift */,
-				477E2D78222C030F00FE5CB4 /* PlayerBasicInfoViewController.swift */,
 				47801A39221EB35600DEB9DA /* PlayerTableViewCell.swift */,
 				47358CDD22185A7F00369F65 /* Assets.xcassets */,
 				47358CEC221865F900369F65 /* PlayerTableViewController.swift */,
@@ -161,11 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				477E2D79222C030F00FE5CB4 /* PlayerBasicInfoViewController.swift in Sources */,
 				47801A3A221EB35600DEB9DA /* PlayerTableViewCell.swift in Sources */,
-				477E2D7B222C0F0100FE5CB4 /* PlayerDetailsViewController.swift in Sources */,
+				474934612251145D0030D570 /* AddEditViewController.swift in Sources */,
 				47358CD722185A7F00369F65 /* AppDelegate.swift in Sources */,
-				477E2D7D222C155100FE5CB4 /* WebViewController.swift in Sources */,
 				47580104224EADFD00F14B3F /* PlayerInfo.swift in Sources */,
 				47358CED221865F900369F65 /* PlayerTableViewController.swift in Sources */,
 				47C918BE2231B05A00AF8521 /* XMLPlayersParser.swift in Sources */,
