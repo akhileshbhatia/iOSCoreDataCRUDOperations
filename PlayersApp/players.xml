@@ -4,11 +4,6 @@
         <name>Novak Djokovic</name>
         <country>Serbia</country>
         <world-ranking>1</world-ranking>
-        <details>
-            Novak Djokovic is a Serbian professional tennis player who is currently ranked world No. 2 in men's singles tennis by the Association of Tennis Professionals (ATP).
-            Djokovic has won 14 Grand Slam singles titles, five ATP Finals titles, 32 ATP World Tour Masters 1000 series titles, 12 ATP World Tour 500 tournaments, and has held the No. 1
-            spot in the ATP rankings for a total of 223 weeks.He is the first and only male player to have won all nine of the Masters 1000 tournaments.
-        </details>
         <image>novakdjokovic</image>
         <url>https://en.wikipedia.org/wiki/Novak_Djokovic</url>
     </player>
@@ -17,12 +12,6 @@
         <name>Rafael Nadal</name>
         <country>Spain</country>
         <world-ranking>2</world-ranking>
-        <details>
-            Rafael Nadal is a Spanish professional tennis player, currently world No. 1 in men's singles tennis by the Association of Tennis Professionals (ATP).
-            Nadal has won 17 Grand Slam singles titles, the second most in history for a male player, as well as a record 33 ATP World Tour Masters 1000 titles, 20 ATP World
-            Tour 500 tournaments, and the 2008 Olympic gold medal in singles.In 2010, he became the seventh male player in history and youngest of five in the Open Era to
-            achieve the Career Grand Slam at age 24.
-        </details>
         <image>rafaelnadal</image>
         <url>https://en.wikipedia.org/wiki/Rafael_Nadal</url>
     </player>
@@ -31,11 +20,6 @@
         <name>Alexander Zverev</name>
         <country>Germany</country>
         <world-ranking>3</world-ranking>
-        <details>
-            Alexander Zverev (born 20 April 1997) is a German professional tennis player. He is currently the youngest player in the ATP top 10. In May 2017, Zverev entered the ATP top-10
-            for the first time after defeating Novak Djokovic in the final of the 2017 Italian Open, thus winning his first Masters 1000 title.The win made him just the 4th different player
-            to beat Djokovic in a Masters 1000 final, after Nadal, Murray, and Federer.
-        </details>
         <image>alexanderzverev</image>
         <url>https://en.wikipedia.org/wiki/Alexander_Zverev</url>
     </player>
@@ -44,11 +28,6 @@
         <name>Juan Martin Del Potro</name>
         <country>Argentina</country>
         <world-ranking>4</world-ranking>
-        <details>
-            Juan Martín del Potro is an Argentine professional tennis player who is currently ranked world No. 4 in men's singles by the Association of Tennis Professionals (ATP).
-            His biggest achievement has been winning the 2009 US Open, defeating Rafael Nadal in the semifinal and 5-time defending champion Roger Federer in the final. He was the first to defeat both Federer and Nadal during same major.He is also the second
-            Argentine and the fifth-youngest man to win the US Open in the Open Era.
-        </details>
         <image>delpotro</image>
         <url>https://en.wikipedia.org/wiki/Juan_Mart%C3%ADn_del_Potro</url>
     </player>
@@ -57,11 +36,6 @@
         <name>Kevin Anderson</name>
         <country>South Africa</country>
         <world-ranking>5</world-ranking>
-        <details>
-            Kevin Anderson (born 18 May 1986) is a South African professional tennis player who is currently ranked world No. 6 in men's singles by the Association of Tennis
-            Professionals (ATP). He became the top-ranked male South African player on 10 March 2008 after making the final at the 2008 Tennis Channel Open in Las Vegas. He achieved
-            his career-high ranking of world No. 5 on 16 July 2018.
-        </details>
         <image>kevinanderson</image>
         <url>https://en.wikipedia.org/wiki/Kevin_Anderson_(tennis)</url>
     </player>
@@ -70,10 +44,6 @@
         <name>Kei Nishikori</name>
         <country>Japan</country>
         <world-ranking>6</world-ranking>
-        <details>
-            Kei Nishikori (born 29 December 1989) is a Japanese professional tennis player. He is the only male Japanese tennis player ever to be ranked inside the top 5 in singles, and first reached his career-high singles ranking of world No. 4 in March 2015.
-            He has won 11 singles titles and was runner-up at the 2014 US Open, making him the first male player representing an Asian country to reach a Grand Slam singles final.
-        </details>
         <image>keinishikori</image>
         <url>https://en.wikipedia.org/wiki/Kei_Nishikori</url>
     </player>
@@ -82,10 +52,6 @@
         <name>Roger Federer</name>
         <country>Switzerland</country>
         <world-ranking>7</world-ranking>
-        <details>
-            Roger Federer is a Swiss professional tennis player who is currently ranked world No. 7 in men's singles tennis by the Association of Tennis Professionals (ATP).
-            Federer has won 20 Grand Slam singles titles—the most in history for a male player—and has held the world No. 1 spot in the ATP rankings for a record total of 310 weeks, including a record 237 consecutive weeks. He is one of eight men to have achieved a career Grand Slam. Federer has reached a record 30 men's singles Grand Slam finals.
-        </details>
         <image>rogerfederer</image>
         <url>https://en.wikipedia.org/wiki/Roger_Federer</url>
     </player>
@@ -94,11 +60,6 @@
         <name>Dominic Thiem</name>
         <country>Austria</country>
         <world-ranking>8</world-ranking>
-        <details>
-            Dominic Thiem (born 3 September 1993) is an Austrian professional tennis player who has a career-high ATP ranking of world No. 4, which he first achieved on 6 November 2017. He has won eleven singles titles on the ATP Tour. In 2018, Thiem reached his
-            first Grand Slam final at the French Open.
-            Thiem is primarily an aggressive baseline player, who is adept at defending, as well. His groundstrokes are solid on both wings, with a heavy forehand and a tenacious, powerful single-handed backhand.
-        </details>
         <image>dominictheim</image>
         <url>https://en.wikipedia.org/wiki/Dominic_Thiem</url>
     </player>
@@ -107,10 +68,6 @@
         <name>John Isner</name>
         <country>USA</country>
         <world-ranking>9</world-ranking>
-        <details>
-            John Robert Isner (born April 26, 1985) is an American professional tennis player who is the No. 9 ranked in men's singles by the Association of Tennis Professionals (ATP), and has been ranked as high as No. 8. Considered one of the best servers ever to
-            play on the ATP World Tour, Isner achieved his career-high singles ranking in July 2018 by virtue of his maiden Masters 1000 crown at the 2018 Miami Open and a semifinals appearance at the 2018 Wimbledon Championships.
-        </details>
         <image>johnisner</image>
         <url>https://en.wikipedia.org/wiki/John_Isner</url>
     </player>
@@ -119,9 +76,6 @@
         <name>Marin Cilic</name>
         <country>Croatia</country>
         <world-ranking>10</world-ranking>
-        <details>
-            Marin Čilić (born 28 September 1988) is a Croatian professional tennis player. Over the course of his career, Čilić has won 18 ATP singles titles, including a Grand Slam title at the 2014 US Open.His career-high singles ranking is world No. 3, achieved on 28 January 2018. Čilić first came to international prominence by defeating world No. 2 Andy Murray in the fourth round of the 2009 US Open.
-        </details>
         <image>marincilic</image>
         <url>https://www.atptour.com/en/players/marin-cilic/c977/overview</url>
     </player>

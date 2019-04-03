@@ -32,18 +32,25 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
         let request = getAllPlayersRequest();
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil);
         frc.delegate = self;
-//                deleteAllRows();
-//                deleteAllImageFiles();
+//                        deleteAllRows();
+//                        deleteAllImageFiles();
         if try! context.count(for: request) == 0 {
             print("no data");
             savePlayersFromXMLFile();
         }
         do {
             try frc.performFetch()
+            players = frc.fetchedObjects as! [Players];
         }
         catch{
             print("unable to fetch data");
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        players = frc.fetchedObjects as! [Players];
+        print(players.last);
+        self.tableView.reloadData();
     }
     
     func getAllPlayersRequest() -> NSFetchRequest<NSFetchRequestResult>{
@@ -70,7 +77,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             playersObj.name = player.name;
             playersObj.country = player.country
             playersObj.ranking = Int64(player.ranking);
-            playersObj.details = player.details;
             playersObj.url = player.url;
             
             //create file url
@@ -80,7 +86,7 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             //save image to path
             saveImageToPath(image: UIImage(named: player.image)!, path: imageUrl);
             
-//            print("Added player \(player.ranking)");
+            //            print("Added player \(player.ranking)");
         }
         
         do {
@@ -133,6 +139,7 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        players = frc.fetchedObjects as! [Players];
         self.tableView.reloadData();
     }
     
@@ -141,17 +148,47 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return frc.sections![section].numberOfObjects;
+//        return frc.sections![section].numberOfObjects;
+        return players.count;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PlayerTableViewCell;
         cell.backgroundColor = UIColor(white: 1, alpha: 0.6);
-        playersObj = frc.object(at: indexPath) as! Players;
+//        playersObj = frc.object(at: indexPath) as! Players;
+        playersObj = players[indexPath.row];
         cell.playerName!.text = playersObj.name;
         cell.playerRank!.text = String(playersObj.ranking);
+        cell.playerCountry.text = playersObj.country
         cell.playerImage!.image = getImageFromDocumentsDirectory(imageName: String(playersObj.ranking));
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+//            playersObj = frc.object(at: indexPath) as! Players;
+            playersObj = players[indexPath.row];
+            context.delete(playersObj);
+            do{
+                try context.save();
+            }
+            catch{
+                print("Error in deleting the data");
+            }
+            
+            do{
+                try frc.performFetch();
+                players = frc.fetchedObjects as! [Players];
+            }
+            catch{
+                print("Error in fetching the data after deleting");
+            }
+            self.tableView.reloadData();
+        }
     }
     
     func getImageFromDocumentsDirectory(imageName : String) -> UIImage {
@@ -162,14 +199,16 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0;
+        return 90.0;
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destination = segue.destination as! AddEditViewController
-        
-        
+        if segue.identifier == "editSegue"{
+            let destination = segue.destination as! AddEditViewController
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell);
+//            destination.playersObj = frc.object(at: indexPath!) as! Players;
+            destination.playersObj = players[indexPath!.row];
+        }
     }
     
 }
