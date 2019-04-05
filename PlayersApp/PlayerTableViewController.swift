@@ -34,8 +34,8 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
         let request = getAllPlayersRequest();
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil);
         frc.delegate = self;
-//                                deleteAllRows();
-//                                deleteAllImageFiles();
+        //                                deleteAllRows();
+        //                                deleteAllImageFiles();
         if try! context.count(for: request) == 0 {
             print("no data");
             savePlayersFromXMLFile();
@@ -241,6 +241,21 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             }
             self.tableView.reloadData();
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.transform = CGAffineTransform(translationX: 0, y: 45.0);
+        cell.alpha = 0;
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.08*Double(indexPath.row),
+            options: .curveEaseInOut,
+            animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0);
+                cell.alpha = 1
+            },
+            completion: nil
+        );
     }
     
     func getImageFromDocumentsDirectory(imageName : String) -> UIImage {
