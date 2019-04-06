@@ -23,14 +23,19 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     var entity : NSEntityDescription! = nil;
     var frc: NSFetchedResultsController<NSFetchRequestResult>! = nil;
     
+    @IBOutlet weak var reorderBtn: UIBarButtonItem!
     
+    @IBAction func reorderAction(_ sender: Any) {
+        self.tableView.isEditing = !self.tableView.isEditing;
+        reorderBtn.title = self.tableView.isEditing ? "Done" : "Reorder";
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad();
         self.title = "Top tennis players";
         backgroundImage.frame = self.tableView.frame;
         self.tableView.backgroundView = backgroundImage;
-        
+        self.tableView.semanticContentAttribute = .forceRightToLeft;
         let request = getAllPlayersRequest();
         frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil);
         frc.delegate = self;
@@ -59,11 +64,23 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             
             return controller;
         })();
-        
-        //reload data after adding search bar
-        tableView.reloadData();
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        players = frc.fetchedObjects as! [Players];
+    }
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if self.tableView.isEditing {
+            return .none;
+        }
+        else{
+            return .delete;
+        }
+    }
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObj = players[sourceIndexPath.row];
+        players.remove(at: sourceIndexPath.row);
+        players.insert(movedObj, at: destinationIndexPath.row);
+    }
     func updateSearchResults(for searchController: UISearchController) {
         filteredPlayers.removeAll(keepingCapacity: false);
         //return all players whose name contain the text written in search bar
@@ -75,15 +92,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     
     func isFiltering() -> Bool {
         return resultSearchController.isActive && !resultSearchController.searchBar.text!.isEmpty;
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        players = frc.fetchedObjects as! [Players];
-        //reset search bar when view appears
-        resultSearchController.searchBar.text = "";
-        resultSearchController.isActive = false;
-        //        print(players.last);
-        self.tableView.reloadData();
     }
     
     func getAllPlayersRequest() -> NSFetchRequest<NSFetchRequestResult>{
@@ -118,8 +126,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             
             //save image to path
             saveImageToPath(image: UIImage(named: player.image)!, path: imageUrl);
-            
-            //            print("Added player \(player.ranking)");
         }
         
         do {
@@ -184,7 +190,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return frc.sections![section].numberOfObjects;
         //return filter data count if user is filtering
         if(isFiltering()){
             return filteredPlayers.count;
@@ -197,7 +202,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PlayerTableViewCell;
         cell.backgroundColor = UIColor(white: 1, alpha: 0.6);
-        //        playersObj = frc.object(at: indexPath) as! Players;
         if (isFiltering()){
             playersObj = filteredPlayers[indexPath.row];
         }
@@ -217,7 +221,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            //            playersObj = frc.object(at: indexPath) as! Players;
             if(isFiltering()){
                 playersObj = filteredPlayers[indexPath.row];
             }
@@ -253,7 +256,7 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
             animations: {
                 cell.transform = CGAffineTransform(translationX: 0, y: 0);
                 cell.alpha = 1
-            },
+        },
             completion: nil
         );
     }
@@ -273,7 +276,6 @@ class PlayerTableViewController: UITableViewController, XMLParserDelegate, NSFet
         if segue.identifier == "editSegue"{
             let destination = segue.destination as! AddEditViewController
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell);
-            //            destination.playersObj = frc.object(at: indexPath!) as! Players;
             if (isFiltering()){
                 destination.playersObj = filteredPlayers[indexPath!.row];
             }

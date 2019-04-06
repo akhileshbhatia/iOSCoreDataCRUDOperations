@@ -93,12 +93,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="B9v-uT-uiO">
+                        <barButtonItem key="leftBarButtonItem" title="Reorder" id="d8f-ON-eKj">
+                            <connections>
+                                <action selector="reorderAction:" destination="Xsz-He-922" id="4BN-9e-gDV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="IW7-nM-S3Z">
                             <connections>
                                 <segue destination="gHr-7z-MP2" kind="show" identifier="addSegue" id="abB-E5-gu5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="reorderBtn" destination="d8f-ON-eKj" id="cgA-kD-4hi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQd-kz-pu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
